@@ -16,9 +16,12 @@ class LocationHandler(context: Context) {
         LocationServices.getFusedLocationProviderClient(context)
 
     fun registerLocationListener(locationCallback: LocationCallback) {
+        val locationRequest = LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 100L)
+            .setMinUpdateDistanceMeters(5f)
+            .build()
+        client.requestLocationUpdates(locationRequest, locationCallback, null)
         // TODO 2: Create a LocationRequest with Priority.PRIORITY_HIGH_ACCURACY,
-        //  min update distance set to 5m and update interval to 100ms.
-
+        //  min update distance set to 5m and update interval to 100ms
         // TODO 3: Register request and callback with the fused location service client.
 
     }
